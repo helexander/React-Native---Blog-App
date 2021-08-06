@@ -1,12 +1,12 @@
 import createDataContext from './createDataContext';
 
-
 const blogReducer = (state, action) => {
     switch (action.type) {
         case 'add_blogpost':
             return [...state, {
                 id: Date.now(),
-                title: `Blog Post #${state.length + 1}`
+                title: action.payload.title,
+                content: action.payload.content
             }];
         case 'delete_blogpost':
             return state.filter((blogPost) => {
@@ -18,8 +18,9 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = (dispatch) => {
-    return () => {
-        dispatch({ type: 'add_blogpost' });
+    return (title, content, callback) => {
+        dispatch({ type: 'add_blogpost', payload: { title: title, content: content } });
+        callback();
     }
 };
 
