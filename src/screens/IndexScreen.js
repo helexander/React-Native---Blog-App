@@ -25,7 +25,20 @@ const IndexScreen = ({ navigation }) => {
     </View>
 };
 
+IndexScreen.navigationOptions = ({ navigation }) => {
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+                <Feather name="plus" size={30} style={styles.plusStyle} />
+            </TouchableOpacity>
+        ),
+    };
+};
+
 const styles = StyleSheet.create({
+    plusStyle: {
+        marginRight: 20,
+    },
     row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
