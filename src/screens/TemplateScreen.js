@@ -7,6 +7,11 @@ const _ = () => {
     </View>
 };
 
+// onPress={() => addBlogPost(title, content, () => {
+// Navigate back to index screen only when we have successfully dispatched an action
+//     navigation.navigate('Index');
+// })}
+
 const styles = StyleSheet.create({});
 
 export default _;
