@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const BlogPostForm = () => {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+const BlogPostForm = ({ onSubmit, initialBlogValues }) => {
+    const [title, setTitle] = useState(initialBlogValues.title);
+    const [content, setContent] = useState(initialBlogValues.content);
 
     return (
         <View>
@@ -21,11 +21,19 @@ const BlogPostForm = () => {
             />
             <Button
                 title="Save Blog Post"
-
+                onPress={() => onSubmit(title, content)}
 
             />
         </View>
     );
+};
+
+// These default values will automatically be used if there are no values in place
+BlogPostForm.defaultProps = {
+    initialBlogValues: {
+        title: '',
+        content: ''
+    }
 };
 
 const styles = StyleSheet.create({
